@@ -21,6 +21,32 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(jpg|png)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/img/',
+              publicPath: 'assets/img/'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(svg|eot|woff|ttf|svg|woff2)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: "[path][name].[ext]",
+              outputPath: "assets/font/",
+              publicPath: "assets/font/"
+            }
+          }
+        ]
+      }
     ],
   },
   plugins: [
