@@ -1,3 +1,40 @@
-img {
-    display: block;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Base */
+.container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.row {
+    display: flex;
+    width: 90%;
+}
+[class*="col-"] {
+    display: flex;
+    width: 100%;
+}
+
+/* Nav */
+@media (max-width: 600px) {
+    .hideon-s {
+        display: none;
+    }
+    .showon-s {
+        display: flex;
+    }
+}
+@media (min-width:601px) {
+    .showon-s {
+        display: none;
+    }
 }
