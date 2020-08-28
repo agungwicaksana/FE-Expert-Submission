@@ -19,10 +19,41 @@ body {
     display: flex;
     width: 90%;
 }
-[class*="col-"] {
+.col {
     display: flex;
-    width: 100%;
 }
+
+.w5 {width: 5%;}
+.w10 {width: 10%;}
+.w20 {width: 20%;}
+.w30 {width: 30%;}
+.w35 {width: 35%;}
+.w40 {width: 40;}
+.w45 {width: 45%;}
+.w50 {width: 50%;}
+.w60 {width: 60%;}
+.w65 {width: 65%;}
+.w70 {width: 70%;}
+.w75 {width: 75%;}
+.w80 {width: 80%;}
+.w90 {width: 90%;}
+.w95 {width: 95%;}
+.w100 {width: 100%;}
+
+/* Utilities */
+.jcs {justify-content: flex-start;}
+.jcc {justify-content: center;}
+.jce {justify-content: flex-end;}
+.jca {justify-content: space-around;}
+.jcb {justify-content: space-between;}
+
+.ais {align-items: flex-start;}
+.aic {align-items: center;}
+.aie {align-items: flex-end;}
+
+.tc {text-align: center;}
+.tr {text-align: right;}
+.tj {text-align: justify;}
 
 /* Nav */
 @media (max-width: 600px) {
