@@ -28,8 +28,8 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'assets/img/',
-              publicPath: 'assets/img/'
+              outputPath: 'img/',
+              publicPath: 'img/'
             }
           }
         ]
@@ -41,8 +41,8 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: "[path][name].[ext]",
-              outputPath: "assets/font/",
-              publicPath: "assets/font/"
+              outputPath: "font/",
+              publicPath: "font/"
             }
           }
         ]
