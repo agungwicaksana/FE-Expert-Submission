@@ -1,5 +1,10 @@
 import 'regenerator-runtime'; /* for async await transpile */
+import '../public/fonts/Rancho-Regular.ttf';
 import '../styles/main.css';
-require('font-awesome/css/font-awesome.css');
+import 'font-awesome/css/font-awesome.css';
 
-console.log('Hello Coders! :)');
+import nav from './navigation.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+    nav.drawer();
+})
