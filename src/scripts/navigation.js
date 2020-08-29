@@ -13,18 +13,25 @@ class Nav {
             closeBtn.style.transition = ".2s";
         })
 
-        closeBtn.addEventListener('click', e => closeDrawer(e));
-        drawerContainer.addEventListener('click', e => closeDrawer(e));
+        closeBtn.addEventListener('click', e => {
+            e.preventDefault();
+            closeDrawer();
+        });
 
-        function closeDrawer(e) {
+        drawerContainer.addEventListener('click', e => {
+            e.preventDefault();
+            if( e.target.classList.contains('drawer-container') ) {
+                closeDrawer();
+            }
+        });
+
+        function closeDrawer() {
             closeBtn.style.transform = "rotate(180deg)";
             closeBtn.style.transition = ".4s";
             setTimeout(() => {
                 drawer.classList.remove('open');
                 drawerContainer.classList.remove('open');
             }, 60);
-            e.preventDefault();
-            e.stopPropagation();
         }
     }
 }
