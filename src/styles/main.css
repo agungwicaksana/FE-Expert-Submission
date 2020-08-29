@@ -66,11 +66,19 @@ a {
 .tj {text-align: justify;}
 
 /* Nav */
+nav {
+    padding: 10px 0;
+    -webkit-box-shadow: 0px 1px 5px 0px rgba(120,120,120,0.36);
+    box-shadow: 0px 1px 5px 0px rgba(120,120,120,0.36);
+}
 nav .menu{
     color: #24484E;
 }
 nav img {
     width: 140px;
+}
+#menu-btn {
+    padding: 0 14px;
 }
 .fa.menu {
     font-size: 4vh;
