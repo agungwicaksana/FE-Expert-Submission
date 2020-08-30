@@ -11,28 +11,39 @@ class Nav {
             e.preventDefault();
             closeBtn.style.transform = "rotate(0deg)";
             closeBtn.style.transition = ".2s";
+            this.toggleSpans();
         })
 
         closeBtn.addEventListener('click', e => {
             e.preventDefault();
-            closeDrawer();
+            this.closeDrawer(closeBtn, drawer, drawerContainer);
         });
 
         drawerContainer.addEventListener('click', e => {
             if( e.target.classList.contains('drawer-container') ) {
                 e.preventDefault();
-                closeDrawer();
+                this.closeDrawer(closeBtn, drawer, drawerContainer);
             }
         });
+    }
 
-        function closeDrawer() {
-            closeBtn.style.transform = "rotate(180deg)";
-            closeBtn.style.transition = ".4s";
-            setTimeout(() => {
-                drawer.classList.remove('open');
-                drawerContainer.classList.remove('open');
-            }, 60);
-        }
+    static closeDrawer(closeBtn, drawer, drawerContainer) {
+        closeBtn.style.transform = "rotate(180deg)";
+        closeBtn.style.transition = ".4s";
+        setTimeout(() => {
+            drawer.classList.remove('open');
+            drawerContainer.classList.remove('open');
+        }, 60);
+        setTimeout(() => {
+            this.toggleSpans();
+        }, 160);
+    }
+
+    static toggleSpans() {
+        const cardSpans = document.querySelectorAll('.card-img span');
+        cardSpans.forEach(span => {
+            span.classList.toggle('hide');
+        });
     }
 }
 

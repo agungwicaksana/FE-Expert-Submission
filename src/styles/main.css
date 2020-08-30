@@ -64,12 +64,13 @@ a {
 .aic {align-items: center;}
 .aie {align-items: flex-end;}
 
-.tc {text-align: center;}
-.tr {text-align: right;}
-.tj {text-align: justify;}
+.hide {display: none !important;}
 
 /* Nav */
 nav {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
     padding: 10px 0;
     -webkit-box-shadow: 0px 1px 5px 0px rgba(120,120,120,0.36);
     box-shadow: 0px 1px 5px 0px rgba(120,120,120,0.36);
