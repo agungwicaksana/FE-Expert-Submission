@@ -234,3 +234,10 @@ h2.head {font-size: 1.8em;}
     margin-block-end: 10px;
     text-align: justify;
 }
+
+/* Footer */
+footer p {
+    color: #fff;
+    margin-block-start: .5em;
+    margin-block-end: .5em;
+}
