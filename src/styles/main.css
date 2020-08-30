@@ -74,6 +74,7 @@ nav {
     padding: 10px 0;
     -webkit-box-shadow: 0px 1px 5px 0px rgba(120,120,120,0.36);
     box-shadow: 0px 1px 5px 0px rgba(120,120,120,0.36);
+    z-index:10;
 }
 nav .menu{
     color: #24484E;
@@ -112,6 +113,7 @@ nav img {
     width: 0;
     transition: .2s;
     background-color: #000000a2;
+    z-index: 11;
 }
 .drawer-container.open {
     width: 100%;
@@ -208,6 +210,7 @@ h2.head {font-size: 1.8em;}
     border-radius: 5px;
     padding: 5px 7px 2px 50px;
     height: fit-content;
+    z-index: 9;
 }
 
 .card-body {
@@ -241,4 +244,17 @@ footer p {
     color: #fff;
     margin-block-start: .5em;
     margin-block-end: .5em;
+}
+
+/* Skip to content */
+a.skip {
+    display: block;
+    position: absolute;
+    top: -90px;
+    color: #fff;
+    background-color: #204146;
+}
+
+a.skip:focus {
+    top: 90px;
 }

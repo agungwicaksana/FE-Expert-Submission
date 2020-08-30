@@ -11,7 +11,6 @@ class Nav {
             e.preventDefault();
             closeBtn.style.transform = "rotate(0deg)";
             closeBtn.style.transition = ".2s";
-            this.toggleSpans();
         })
 
         closeBtn.addEventListener('click', e => {
@@ -34,16 +33,6 @@ class Nav {
             drawer.classList.remove('open');
             drawerContainer.classList.remove('open');
         }, 60);
-        setTimeout(() => {
-            this.toggleSpans();
-        }, 160);
-    }
-
-    static toggleSpans() {
-        const cardSpans = document.querySelectorAll('.card-img span');
-        cardSpans.forEach(span => {
-            span.classList.toggle('hide');
-        });
     }
 }
 

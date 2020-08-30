@@ -8,6 +8,8 @@
     <link rel="shortcut icon" href="./images/favicon2.png" type="image/png" sizes="92x92">
 </head>
 <body>
+    <!-- Skip to content -->
+    <a href="#hero" class="skip">Skip to content</a>
     <!-- Nav starts -->
     <nav>
         <div class="container">
@@ -17,24 +19,24 @@
                 </div>
                 <div class="hideon-s">
                     <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="#">Favorite</a></li>
-                        <li><a href="https://agungswebstudio.com" target="_blank">About Us</a></li>
+                        <li><a href="/" aria-label="Menu item: Home">Home</a></li>
+                        <li><a href="#" aria-label="Menu item: Favorite">Favorite</a></li>
+                        <li><a href="https://agungswebstudio.com" target="_blank" aria-label="Menu item: About Us">About Us</a></li>
                     </ul>
                 </div>
                 <div class="col w20 jce showon-s">
-                    <a id="menu-btn" href="#" class="col aic" aria-label="Menu icon"><i class="menu fa fa-bars"></i></a>
+                    <a id="menu-btn" href="#" class="col aic" aria-label="Menu icon" aria-selected="opening menu"><i class="menu fa fa-bars"></i></a>
                 </div>
             </div>
         </div>
     </nav>
     <div class="drawer-container">
-        <div class="drawer">
+        <div class="drawer" aria-label="Menu section">
             <a href="" class="close-btn" aria-label="Close menu"><i class="fa fa-times"></i></a>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="#">Favorite</a></li>
-                <li><a href="https://agungswebstudio.com">About Us</a></li>
+            <ul aria-label="menu-section">
+                <li><a href="/" aria-label="Menu item: Home">Home</a></li>
+                <li><a href="#" aria-label="Menu item: Favorite">Favorite</a></li>
+                <li><a href="https://agungswebstudio.com" target="_blank" aria-label="Menu item: About Us">About Us</a></li>
             </ul>
         </div>
     </div>
@@ -42,7 +44,7 @@
 
     <main>
         <!-- Hero starts -->
-        <div class="hero">
+        <div id="hero" class="hero" tabindex="1">
             <div class="container aic">
                 <div class="row">
                     <div class="col w100 jcc">
@@ -60,24 +62,24 @@
         <div id="main-content" class="container">
             <div class="row">
                 <div class="col w100 jcc">
-                    <h3>Explore Indonesian taste . . </h3>
+                    <h3 tabindex="1">Explore Indonesian taste . . </h3>
                 </div>
             </div>
             <div class="row">
-                <div class="col w100 card">
+                <div class="col w100 card" tabindex="1">
                     <div class="card-img">
                         <img src="https://dicoding-restaurant-api.el.r.appspot.com/images/medium/07" alt="">
-                        <span>Ternate</span>
+                        <span aria-label="City: Ternate">Ternate</span>
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title">Pangsit Express</h4>
+                        <h4 class="card-title" aria-label="Restaurant name: Pangsit Express">Pangsit Express</h4>
                         <span class="rating" aria-label="Rating: 4.6"><i class="fa fa-star" aria-hidden="true"></i> 4.6</span>
-                        <p class="card-desc">
+                        <p class="card-desc" aria-roledescription="description">
                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut, fugit? Nemo iusto sit praesentium numquam, consequuntur dicta magni debitis in molestias id itaque officiis maiores rerum harum eveniet eum corporis quidem unde. Debitis quisquam odio ipsum nesciunt molestias nostrum modi.
                         </p>
                     </div>
                 </div>
-                <div class="col w100 card">
+                <div class="col w100 card" tabindex="1">
                     <div class="card-img">
                         <img src="https://dicoding-restaurant-api.el.r.appspot.com/images/medium/07" alt="">
                         <span>Ternate</span>

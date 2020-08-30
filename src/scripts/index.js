@@ -4,8 +4,10 @@ import '../public/fonts/Neucha-Regular.ttf';
 import '../styles/main.css';
 import 'font-awesome/css/font-awesome.css';
 
-import nav from './navigation.js';
+import Nav from './navigation.js';
+import Skip from './skip.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    nav.drawer();
+    Nav.drawer();
+    Skip.reorderContent();
 })
