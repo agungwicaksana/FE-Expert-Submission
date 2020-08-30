@@ -19,8 +19,8 @@ class Nav {
         });
 
         drawerContainer.addEventListener('click', e => {
-            e.preventDefault();
             if( e.target.classList.contains('drawer-container') ) {
+                e.preventDefault();
                 closeDrawer();
             }
         });
