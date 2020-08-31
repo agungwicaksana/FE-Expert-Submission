@@ -174,7 +174,7 @@ h1.head {font-size: 2.9em;}
 h2.head {font-size: 1.8em;}
 
 /* Main Content */
-#main-content {
+#main-content, button {
     font-family: 'Neucha', Helvetica, sans-serif;
 }
 
@@ -194,12 +194,11 @@ h2.head {font-size: 1.8em;}
 
 .ctg-button {
     display: inline-block;
-    font-size: 16px;
+    font-size: 18px;
     border: 2px solid #24484E;
     border-radius: 5px;
     background-color: #fff;
     width: 27%;
-    margin-right: 7px;
     transition: .2s;
     min-width: 44px;
     min-height: 44px;
