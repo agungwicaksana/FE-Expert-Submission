@@ -274,7 +274,7 @@ footer p {
 }
 
 /* Skip to content */
-a.skip {
+a#skip {
     display: block;
     position: absolute;
     top: -90px;
@@ -282,6 +282,6 @@ a.skip {
     background-color: #204146;
 }
 
-a.skip:focus {
+a#skip:focus {
     top: 90px;
 }

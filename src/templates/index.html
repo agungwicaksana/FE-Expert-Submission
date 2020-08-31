@@ -9,7 +9,7 @@
 </head>
 <body>
     <!-- Skip to content -->
-    <a href="#hero" class="skip">Skip to content</a>
+    <a href="#main-content" id="skip" tabindex="1">Skip to content</a>
     <!-- Nav starts -->
     <nav>
         <div class="container">
@@ -62,7 +62,7 @@
         <div id="main-content" class="container">
             <div class="row">
                 <div class="col w100 jcc">
-                    <h3 tabindex="1">Explore Indonesian taste . . </h3>
+                    <h3>Explore Indonesian taste . . </h3>
                 </div>
             </div>
             <div class="row category-container">
@@ -70,9 +70,9 @@
                     <p class="label">Sort by :</p>
                 </div>
                 <div class="col w100 jcb">
-                    <button class="ctg-button active">Name</button>
-                    <button class="ctg-button">Rating</button>
-                    <button class="ctg-button">City</button>
+                    <button class="ctg-button active" aria-label="Sort by name">Name</button>
+                    <button class="ctg-button" aria-label="Sort by rating">Rating</button>
+                    <button class="ctg-button" aria-label="Sort by city">City</button>
                 </div>
             </div>
             <div class="row card-container">

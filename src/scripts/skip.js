@@ -1,6 +1,6 @@
 class Skip {
     static reorderContent() {
-        const skipLink = document.querySelector('.skip');
+        const skipLink = document.getElementById('.skip');
         const hero = document.getElementById('hero');
         
         skipLink.addEventListener('keypress',e => {
