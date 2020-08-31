@@ -5,12 +5,10 @@ import '../styles/main.css';
 import 'font-awesome/css/font-awesome.css';
 
 import Nav from './navigation.js';
-import Skip from './skip.js';
 import Restaurants from './restaurants.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const Restos = new Restaurants();
     Nav.drawer();
     Restos.render();
-    Skip.reorderContent();
 })
