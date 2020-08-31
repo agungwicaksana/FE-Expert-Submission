@@ -27,43 +27,21 @@ a {
     max-width: 390px;
     flex-wrap: wrap;
 }
-.col {
-    display: flex;
-}
+.col {display: flex;}
 
 /* Utilities */
 .clr1 {background-color: #24484E;}
-.clr2 {background-color: #204146;}
-.clr3 {background-color: #506D71;}
-.clr4 {background-color: #D6A685;}
-.clr5 {background-color: #E2BB9F;}
 
-.w5 {width: 5%;}
-.w10 {width: 10%;}
 .w20 {width: 20%;}
-.w30 {width: 30%;}
-.w35 {width: 35%;}
-.w40 {width: 40;}
-.w45 {width: 45%;}
-.w50 {width: 50%;}
-.w60 {width: 60%;}
-.w65 {width: 65%;}
-.w70 {width: 70%;}
-.w75 {width: 75%;}
 .w80 {width: 80%;}
-.w90 {width: 90%;}
-.w95 {width: 95%;}
 .w100 {width: 100%;}
 
-.jcs {justify-content: flex-start;}
 .jcc {justify-content: center;}
 .jce {justify-content: flex-end;}
-.jca {justify-content: space-around;}
 .jcb {justify-content: space-between;}
 
 .ais {align-items: flex-start;}
 .aic {align-items: center;}
-.aie {align-items: flex-end;}
 
 .hide {display: none !important;}
 
@@ -77,31 +55,17 @@ nav {
     box-shadow: 0px 1px 5px 0px rgba(120,120,120,0.36);
     z-index:10;
 }
-nav .menu{
-    color: #24484E;
-}
-nav img {
-    width: 140px;
-}
-#menu-btn {
-    padding: 0 14px;
-}
-.fa.menu {
-    font-size: 4vh;
-}
+nav .menu { color: #24484E; }
+nav img { width: 140px; }
+#menu-btn { padding: 0 14px; }
+.fa.menu { font-size: 4vh; }
 
 @media (max-width: 600px) {
-    .hideon-s {
-        display: none;
-    }
-    .showon-s {
-        display: flex;
-    }
+    .hideon-s { display: none; }
+    .showon-s { display: flex; }
 }
 @media (min-width:601px) {
-    .showon-s {
-        display: none;
-    }
+    .showon-s { display: none; }
 }
 
 /* Drawer */
@@ -116,9 +80,7 @@ nav img {
     background-color: #000000a2;
     z-index: 11;
 }
-.drawer-container.open {
-    width: 100%;
-}
+.drawer-container.open { width: 100%; }
 .drawer {
     color: #fff;
     position: fixed;
@@ -129,9 +91,7 @@ nav img {
     transition: .2s;
     overflow: hidden;
 }
-.drawer.open {
-    width: 230px;
-}
+.drawer.open { width: 230px; }
 .drawer ul {
     margin-top: 20px;
     padding: 20px;
@@ -148,9 +108,7 @@ nav img {
     display: block;
     padding: 8px;
 }
-.drawer li:hover {
-    transform: translateX(40px);
-}
+.drawer li:hover { transform: translateX(40px); }
 .drawer .close-btn {
     font-size: 33px;
     position: absolute;
@@ -175,9 +133,7 @@ h1.head {font-size: 2.9em;}
 h2.head {font-size: 1.8em;}
 
 /* Main Content */
-#main-content, button {
-    font-family: 'Neucha', Helvetica, sans-serif;
-}
+#main-content, button { font-family: 'Neucha', Helvetica, sans-serif; }
 
 #main-content h3 {
     font-size: 1.4em;
@@ -253,12 +209,8 @@ h2.head {font-size: 1.8em;}
     font-size: 1.3em;
     width: 100%;
 }
-.rating {
-    width: 100%;
-}
-.rating i {
-    color: rgb(255, 193, 59);;
-}
+.rating { width: 100%; }
+.rating i { color: rgb(255, 193, 59); }
 .card-desc {
     width: 100%;
     margin-block-start: 10px;
@@ -282,6 +234,4 @@ a#skip {
     background-color: #204146;
 }
 
-a#skip:focus {
-    top: 90px;
-}
+a#skip:focus { top: 90px; }
