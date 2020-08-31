@@ -9,7 +9,8 @@ import Skip from './skip.js';
 import Restaurants from './restaurants.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+    const Restos = new Restaurants();
     Nav.drawer();
-    Restaurants.render();
+    Restos.render();
     Skip.reorderContent();
 })

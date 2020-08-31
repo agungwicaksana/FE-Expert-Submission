@@ -1,12 +1,17 @@
 import Data from '../DATA.json';
 
 class Restaurants {
-    static getData() {
+    constructor(category = 'name') {
+        this.category = category;
+        this.getCategory()
+    }
+
+    getData() {
         return Data.restaurants;
     }
 
-    static generateDOM() {
-        const restaurants = this.getData();
+    generateDOM() {
+        const restaurants = this.sortBy();
         let cards = '';
         restaurants.forEach(restaurant => {
             const {id, name, pictureId, city, description, rating} = restaurant;
@@ -29,14 +34,14 @@ class Restaurants {
         return cards;
     }
 
-    static render() {
+    render() {
         const container = document.querySelector('.card-container');
         const cards = this.generateDOM();
         container.innerHTML = cards;
     }
 
-    static trimParagraph(par) {
-        let wordsLength = 108;
+    trimParagraph(par) {
+        let wordsLength = 50;
         let paragraph = par.split(' ');
         const parLength = paragraph.length;
         
@@ -45,6 +50,40 @@ class Restaurants {
         paragraph = paragraph.join(' ');
         (wordsLength < parLength) ? paragraph += ' . . .' : null;
         return paragraph;
+    }
+
+    sortBy() {
+        let data = this.getData();
+        switch (this.category) {
+            case 'rating':
+                data.sort((a,b) => b.rating - a.rating);
+                break;
+            case 'city':
+                data.sort((a,b) => a.city.localeCompare(b.city));
+                break;
+            default:
+                data.sort((a,b) => a.name.localeCompare(b.name));
+                break;
+        }
+        return data;
+    }
+
+    getCategory() {
+        const ctgButtons = document.querySelectorAll('.ctg-button');
+        ctgButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                this.clearActiveButtons(ctgButtons);
+                btn.classList.add('active');
+                this.category = btn.innerText.toLowerCase();
+                this.render()
+            });
+        });
+    }
+
+    clearActiveButtons(buttons) {
+        buttons.forEach(btn => {
+            btn.classList.remove('active');
+        });
     }
 }
 

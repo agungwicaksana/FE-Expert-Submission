@@ -180,8 +180,35 @@ h2.head {font-size: 1.8em;}
 
 #main-content h3 {
     font-size: 1.4em;
-    color: #24484E;
+    margin-block-end: 5px;
 }
+
+.label {
+    margin-block-start: 4px;
+    margin-block-end: 2px;
+}
+
+.category-container {
+    margin-bottom: 20px;
+}
+
+.ctg-button {
+    display: inline-block;
+    font-size: 16px;
+    border: 2px solid #24484E;
+    border-radius: 5px;
+    background-color: #fff;
+    width: 27%;
+    margin-right: 7px;
+    transition: .2s;
+    min-width: 44px;
+    min-height: 44px;
+}
+.ctg-button:hover,
+.ctg-button.active {
+    background-color: #24484E;
+    color: #fff;
+} 
 
 .card {
     -webkit-box-shadow: 0px 0px 15px 6px rgba(235,235,235,1);
