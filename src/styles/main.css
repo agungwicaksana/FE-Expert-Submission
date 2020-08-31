@@ -227,11 +227,14 @@ footer p {
 
 /* Skip to content */
 a#skip {
+    font-family: Helvetica, sans-serif;
     display: block;
     position: absolute;
     top: -90px;
+    font-size: 20px;
     color: #fff;
     background-color: #204146;
+    padding: 10px;
 }
 
 a#skip:focus { top: 90px; }
