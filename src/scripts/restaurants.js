@@ -16,9 +16,9 @@ class Restaurants {
         restaurants.forEach(restaurant => {
             const {id, name, pictureId, city, description, rating} = restaurant;
             cards += `
-                <div class="col w100 wm45 wl30 card" tabindex="1">
+                <div class="col w100 wm45 wl30 card">
                     <div class="card-img">
-                        <img src="${pictureId}" alt="Picture of ${name}">
+                        <img src="${pictureId}" alt="${name}">
                         <span aria-label="City: ${city}">${city}</span>
                     </div>
                     <div class="card-body">

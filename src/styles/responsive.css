@@ -39,7 +39,10 @@
     
     .category-container { margin: 20px auto 30px; }
 
-    .card-img, .card img { height: 210px; }
+    .card-img, .card img { 
+        max-height: unset;
+        height: 210px;
+    }
     .card-img span {
         padding: 8px 12px 5px 50px;
         left: -111%;
