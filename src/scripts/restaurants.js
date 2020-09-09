@@ -1,21 +1,23 @@
 import Data from '../DATA.json';
 
 class Restaurants {
-    constructor(category = 'name') {
-        this.category = category;
-        this.getCategory()
-    }
+  constructor(category = 'name') {
+    this.category = category;
+    this.getCategory();
+  }
 
-    getData() {
-        return Data.restaurants;
-    }
+  getData() {
+    return Data.restaurants;
+  }
 
-    generateDOM() {
-        const restaurants = this.sortBy();
-        let cards = '';
-        restaurants.forEach(restaurant => {
-            const {id, name, pictureId, city, description, rating} = restaurant;
-            cards += `
+  generateDOM() {
+    const restaurants = this.sortBy();
+    let cards = '';
+    restaurants.forEach((restaurant) => {
+      const {
+        name, pictureId, city, description, rating,
+      } = restaurant;
+      cards += `
                 <div class="col w100 wm45 wl30 card">
                     <div class="card-img">
                         <img src="${pictureId}" alt="${name}">
@@ -30,61 +32,65 @@ class Restaurants {
                     </div>
                 </div>
             `;
-        });
-        return cards;
-    }
+    });
+    return cards;
+  }
 
-    render() {
-        const container = document.querySelector('.card-container');
-        const cards = this.generateDOM();
-        container.innerHTML = cards;
-    }
+  render() {
+    const container = document.querySelector('.card-container');
+    const cards = this.generateDOM();
+    container.innerHTML = cards;
+  }
 
-    trimParagraph(par) {
-        let wordsLength = 50;
-        let paragraph = par.split(' ');
-        const parLength = paragraph.length;
-        
-        (wordsLength > parLength) ? wordsLength = parLength : wordsLength;
-        paragraph = paragraph.slice(0, wordsLength);
-        paragraph = paragraph.join(' ');
-        (wordsLength < parLength) ? paragraph += ' . . .' : null;
-        return paragraph;
-    }
+  trimParagraph(par) {
+    let wordsLength = 50;
+    let paragraph = par.split(' ');
+    const parLength = paragraph.length;
 
-    sortBy() {
-        let data = this.getData();
-        switch (this.category) {
-            case 'rating':
-                data.sort((a,b) => b.rating - a.rating);
-                break;
-            case 'city':
-                data.sort((a,b) => a.city.localeCompare(b.city));
-                break;
-            default:
-                data.sort((a,b) => a.name.localeCompare(b.name));
-                break;
-        }
-        return data;
+    if (wordsLength > parLength) {
+      wordsLength = parLength;
     }
+    paragraph = paragraph.slice(0, wordsLength);
+    paragraph = paragraph.join(' ');
+    if (wordsLength < parLength) {
+      paragraph += ' . . .';
+    }
+    return paragraph;
+  }
 
-    getCategory() {
-        const ctgButtons = document.querySelectorAll('.ctg-button');
-        ctgButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                this.clearActiveButtons(ctgButtons);
-                btn.classList.add('active');
-                this.category = btn.innerText.toLowerCase();
-                this.render()
-            });
-        });
+  sortBy() {
+    const data = this.getData();
+    switch (this.category) {
+      case 'rating':
+        data.sort((a, b) => b.rating - a.rating);
+        break;
+      case 'city':
+        data.sort((a, b) => a.city.localeCompare(b.city));
+        break;
+      default:
+        data.sort((a, b) => a.name.localeCompare(b.name));
+        break;
     }
+    return data;
+  }
 
-    clearActiveButtons(buttons) {
-        buttons.forEach(btn => {
-            btn.classList.remove('active');
-        });
-    }
+  getCategory() {
+    const ctgButtons = document.querySelectorAll('.ctg-button');
+    ctgButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        this.clearActiveButtons(ctgButtons);
+        btn.classList.add('active');
+        this.category = btn.innerText.toLowerCase();
+        this.render();
+      });
+    });
+  }
+
+  clearActiveButtons(buttons) {
+    buttons.forEach((btn) => {
+      btn.classList.remove('active');
+    });
+  }
 }
 
 export default Restaurants;
