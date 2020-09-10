@@ -1,4 +1,5 @@
 import './components/drawer';
+import './components/footer';
 import Url from '../routes/url';
 import Route from '../routes/route';
 
