@@ -181,6 +181,9 @@ h2.head {font-size: 1.8em;}
     overflow: hidden;
     margin: 0 auto 35px;
 }
+.card-link {
+    padding: 0;
+}
 
 .card-img {
     display: flex;

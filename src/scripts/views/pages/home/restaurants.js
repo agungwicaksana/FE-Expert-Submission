@@ -1,24 +1,11 @@
-import Data from '../../../../DATA.json';
 import { restaurantCard } from '../../templates/template-creator';
 import { sortBy } from '../../../utils/home-utils';
+import RestaurantsData from '../../../data/restaurants-data';
 
 class Restaurants {
-  constructor(category) {
-    this._category = category;
+  constructor() {
+    this._category = 'name'; // default category
     this._getCategory();
-  }
-
-  getData() {
-    return Data.restaurants;
-  }
-
-  render() {
-    const container = document.querySelector('.card-container');
-    const restaurants = sortBy(this.getData(), this._category);
-    container.innerHTML = '';
-    restaurants.forEach((restaurant) => {
-      container.innerHTML += restaurantCard(restaurant);
-    });
   }
 
   _getCategory() {
@@ -36,6 +23,25 @@ class Restaurants {
   _clearActiveButtons(buttons) {
     buttons.forEach((btn) => {
       btn.classList.remove('active');
+    });
+  }
+
+  async _getData() {
+    const restaurants = await RestaurantsData.list();
+    return restaurants;
+  }
+
+  async _sortData() {
+    const data = await this._getData();
+    return sortBy(data, this._category);
+  }
+
+  async render() {
+    const container = document.querySelector('.card-container');
+    const restaurants = await this._sortData();
+    container.innerHTML = '';
+    restaurants.forEach((restaurant) => {
+      container.innerHTML += restaurantCard(restaurant);
     });
   }
 }
