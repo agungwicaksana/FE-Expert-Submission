@@ -4,15 +4,20 @@ import '../styles/main.css';
 import '../styles/responsive.css';
 import 'font-awesome/css/font-awesome.css';
 
-import './views/components/drawer';
+// import Restaurants from './restaurants';
+import App from './views/app';
 
-import Restaurants from './restaurants';
+// document.addEventListener('DOMContentLoaded', () => {
+//   const Restos = new Restaurants();
+//   Restos.render();
+// });
 
-document.addEventListener('DOMContentLoaded', () => {
-  const Restos = new Restaurants();
-  Restos.render();
+const app = new App(document.getElementById('main-content'));
+
+window.addEventListener('hashchange', () => {
+  app.renderPage();
 });
 
-document.addEventListener('load', () => {
-
+window.addEventListener('load', () => {
+  app.renderPage();
 });
