@@ -4,10 +4,10 @@
 }
 
 body {
-    font-family: 'Rancho', Helvetica, sans-serif;
     margin: 0;
     padding: 0;
 }
+body, button {font-family: 'Neucha', Helvetica, sans-serif;}
 a {
     text-decoration: none;
     color: unset;
@@ -129,6 +129,7 @@ nav ul {
     background: url('../public/images/heros/hero-image_2.jpg') no-repeat;
     background-size: cover;
     height: 200px;
+    font-family: 'Rancho', Helvetica, sans-serif;
 }
 .hero .container {height: 100%;}
 .head {
@@ -141,8 +142,6 @@ h1.head {font-size: 2.9em;}
 h2.head {font-size: 1.8em;}
 
 /* Main Content */
-#main-content, button { font-family: 'Neucha', Helvetica, sans-serif; }
-
 #main-content h3 {
     font-size: 1.4em;
     margin-block-end: 5px;
