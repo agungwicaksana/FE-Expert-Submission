@@ -4,13 +4,7 @@ import '../styles/main.css';
 import '../styles/responsive.css';
 import 'font-awesome/css/font-awesome.css';
 
-// import Restaurants from './restaurants';
 import App from './views/app';
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   const Restos = new Restaurants();
-//   Restos.render();
-// });
 
 const app = new App(document.getElementById('main-content'));
 
