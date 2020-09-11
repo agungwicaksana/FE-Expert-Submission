@@ -1,10 +1,14 @@
 import { restaurantCard } from '../../templates/template-creator';
-import { sortBy } from '../../../utils/home-utils';
+import { sortBy, clearActiveButtons, setActiveButton, scrollToRestaurantsSection } from '../../../utils/home-utils';
 import RestaurantsData from '../../../data/restaurants-data';
+import Page from './page';
 
 class Restaurants {
   constructor() {
     this._category = 'name'; // default category
+    this._dataPerPage = 9;
+    this._activePage = 1;
+    this._renderPageButtons();
     this._getCategory();
   }
 
@@ -12,18 +16,48 @@ class Restaurants {
     const ctgButtons = document.querySelectorAll('.ctg-button');
     ctgButtons.forEach((btn) => {
       btn.addEventListener('click', () => {
-        this._clearActiveButtons(ctgButtons);
+        clearActiveButtons(ctgButtons);
         btn.classList.add('active');
         this._category = btn.innerText.toLowerCase();
+        this._resetPageButtons();
         this.render();
       });
     });
   }
 
-  _clearActiveButtons(buttons) {
-    buttons.forEach((btn) => {
-      btn.classList.remove('active');
+  async _getNumberOfPages() {
+    const restaurants = await this._getData();
+    return Page.getNumberOfPages({
+      data: restaurants,
+      dataPerPage: this._dataPerPage,
     });
+  }
+
+  async _renderPageButtons() {
+    const numberOfPages = await this._getNumberOfPages();
+    Page.renderButtons(numberOfPages);
+    this._initPageButtons();
+  }
+
+  _initPageButtons() {
+    const buttons = document.querySelectorAll('.pg-button');
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        clearActiveButtons(buttons);
+        setActiveButton(button);
+        const activePage = parseInt(button.innerHTML, 10);
+        this._activePage = activePage;
+        this.render();
+        scrollToRestaurantsSection();
+      });
+    });
+  }
+
+  _resetPageButtons() {
+    const buttons = document.querySelectorAll('.pg-button');
+    clearActiveButtons(buttons);
+    setActiveButton(buttons[0]);
+    this._activePage = 1;
   }
 
   async _getData() {
@@ -36,11 +70,21 @@ class Restaurants {
     return sortBy(data, this._category);
   }
 
+  async _prepareToRender() {
+    const restaurants = await this._sortData();
+    const pagedRestaurants = Page.getPagedData({
+      data: restaurants,
+      dataPerPage: this._dataPerPage,
+      activePage: this._activePage,
+    });
+    return pagedRestaurants;
+  }
+
   async render() {
     const container = document.querySelector('.card-container');
-    const restaurants = await this._sortData();
+    const pagedRestaurants = await this._prepareToRender();
     container.innerHTML = '';
-    restaurants.forEach((restaurant) => {
+    pagedRestaurants.forEach((restaurant) => {
       container.innerHTML += restaurantCard(restaurant);
     });
   }

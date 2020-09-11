@@ -29,7 +29,25 @@ const sortBy = (data, category) => {
   return data;
 };
 
+const clearActiveButtons = (buttons) => {
+  buttons.forEach((btn) => {
+    btn.classList.remove('active');
+  });
+};
+
+const setActiveButton = (button) => {
+  button.classList.add('active');
+};
+
+const scrollToRestaurantsSection = () => {
+  const restaurantsSection = document.getElementById('restaurants-section');
+  restaurantsSection.scrollIntoView();
+};
+
 export {
   trimParagraph,
   sortBy,
+  clearActiveButtons,
+  setActiveButton,
+  scrollToRestaurantsSection,
 };

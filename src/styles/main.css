@@ -152,23 +152,36 @@ h2.head {font-size: 1.8em;}
     margin-block-end: 2px;
 }
 
-.category-container {
+.category-container,
+.pagination-container {
     margin-bottom: 20px;
 }
 
 .ctg-button {
+    width: 27%;
+    min-width: 44px;
+    min-height: 44px;
+}
+
+.pg-button {
+    height: 44px;
+    width: 44px;
+    margin: 0 1.2vw;
+}
+
+.ctg-button,
+.pg-button {
     display: inline-block;
     font-size: 18px;
     border: 2px solid #24484E;
     border-radius: 5px;
     background-color: #fff;
-    width: 27%;
     transition: .2s;
-    min-width: 44px;
-    min-height: 44px;
 }
 .ctg-button:hover,
-.ctg-button.active {
+.ctg-button.active,
+.pg-button:hover,
+.pg-button.active {
     background-color: #24484E;
     color: #fff;
 } 
