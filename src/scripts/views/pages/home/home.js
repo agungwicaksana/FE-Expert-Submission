@@ -23,8 +23,9 @@ const Home = {
   },
 
   async afterRender() {
+    const showLoading = true;
     new Restaurants()
-      .render();
+      .render(showLoading);
   },
 };
 

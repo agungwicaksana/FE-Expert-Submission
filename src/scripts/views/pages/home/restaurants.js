@@ -26,7 +26,7 @@ class Restaurants {
   }
 
   async _getNumberOfPages() {
-    const restaurants = await this._getData();
+    const restaurants = await this._getData(false);
     return Page.getNumberOfPages({
       data: restaurants,
       dataPerPage: this._dataPerPage,
@@ -60,18 +60,18 @@ class Restaurants {
     this._activePage = 1;
   }
 
-  async _getData() {
-    const restaurants = await RestaurantsData.list();
+  async _getData(showLoading) {
+    const restaurants = await RestaurantsData.list(showLoading);
     return restaurants;
   }
 
-  async _sortData() {
-    const data = await this._getData();
+  async _sortData(showLoading) {
+    const data = await this._getData(showLoading);
     return sortBy(data, this._category);
   }
 
-  async _prepareToRender() {
-    const restaurants = await this._sortData();
+  async _prepareToRender(showLoading) {
+    const restaurants = await this._sortData(showLoading);
     const pagedRestaurants = Page.getPagedData({
       data: restaurants,
       dataPerPage: this._dataPerPage,
@@ -80,9 +80,9 @@ class Restaurants {
     return pagedRestaurants;
   }
 
-  async render() {
+  async render(showLoading = false) {
     const container = document.querySelector('.card-container');
-    const pagedRestaurants = await this._prepareToRender();
+    const pagedRestaurants = await this._prepareToRender(showLoading);
     container.innerHTML = '';
     pagedRestaurants.forEach((restaurant) => {
       container.innerHTML += restaurantCard(restaurant);

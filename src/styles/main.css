@@ -142,6 +142,10 @@ h1.head {font-size: 2.9em;}
 h2.head {font-size: 1.8em;}
 
 /* Main Content */
+#main-content {
+    min-height: 84vh;
+}
+
 #main-content h3 {
     font-size: 1.4em;
     margin-block-end: 5px;
@@ -243,6 +247,10 @@ h2.head {font-size: 1.8em;}
 }
 
 /* Footer */
+footer {
+    position: relative;
+    z-index: 10;
+}
 footer p {
     color: #fff;
     margin-block-start: .5em;
@@ -262,3 +270,38 @@ a#skip {
 }
 
 a#skip:focus { top: 90px; }
+
+/* Loading */
+#loading {
+    display: flex;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 7;
+    background: #fff;
+    justify-content: center;
+}
+
+.loading {
+    font-size: 4em;
+    letter-spacing: 4px;
+}
+
+.loading span {
+    display: inline-block;
+}
+.loading span.play {
+    animation: loadingAnimation .5s ease-in-out 0s 2 alternate both;
+}
+
+@keyframes loadingAnimation {
+    from {transform: translate(0, 0) rotate(0deg);}
+    to {transform: translate(0, -40px) rotate(-15deg)}
+}
+
+.error {
+    color: #c21616;
+    font-size: 3rem;
+    font-weight: 600;
+}
