@@ -1,18 +1,15 @@
 /* eslint-disable no-param-reassign */
 const DrawerInit = {
-  init({ drawer, drawerContainer, menuBtn, closeBtn }) {
+  init({ drawer, drawerContainer, menuBtn, closeBtn, menuList }) {
     this._eventMenuBtn({ menuBtn, drawer, drawerContainer, closeBtn });
     this._eventCloseBtn({ closeBtn, drawer, drawerContainer });
     this._eventDrawerContainer({ drawerContainer, closeBtn, drawer });
+    this._eventMenuList({ menuList, closeBtn, drawer, drawerContainer });
   },
 
   _eventMenuBtn({ menuBtn, drawer, drawerContainer, closeBtn }) {
     menuBtn.addEventListener('click', (event) => {
-      drawer.classList.toggle('open');
-      drawerContainer.classList.toggle('open');
-      event.preventDefault();
-      closeBtn.style.transform = 'rotate(0deg)';
-      closeBtn.style.transition = '.2s';
+      this._openDrawer({ drawer, drawerContainer, event, closeBtn });
     });
   },
 
@@ -30,6 +27,22 @@ const DrawerInit = {
         this._closeDrawer({ closeBtn, drawer, drawerContainer });
       }
     });
+  },
+
+  _eventMenuList({ menuList, closeBtn, drawer, drawerContainer }) {
+    menuList.forEach((menu) => {
+      menu.addEventListener('click', () => {
+        this._closeDrawer({ closeBtn, drawer, drawerContainer });
+      });
+    });
+  },
+
+  _openDrawer({ drawer, drawerContainer, event, closeBtn }) {
+    drawer.classList.toggle('open');
+    drawerContainer.classList.toggle('open');
+    event.preventDefault();
+    closeBtn.style.transform = 'rotate(0deg)';
+    closeBtn.style.transition = '.2s';
   },
 
   _closeDrawer({ closeBtn, drawer, drawerContainer }) {

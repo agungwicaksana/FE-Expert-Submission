@@ -8,6 +8,7 @@ class Drawer extends HTMLElement {
       drawer: document.querySelector('.drawer'),
       menuBtn: document.getElementById('menu-btn'),
       closeBtn: document.querySelector('.close-btn'),
+      menuList: document.querySelectorAll('.menu-list'),
     });
   }
 
@@ -43,9 +44,9 @@ class Drawer extends HTMLElement {
 
   _menuLists() {
     return `
-      <li><a href="#/home" aria-label="Menu item: Home">Home</a></li>
-      <li><a href="#/favorite" aria-label="Menu item: Favorite">Favorite</a></li>
-      <li><a href="https://agungswebstudio.com" target="_blank" rel="noreferrer" aria-label="Menu item: About Us">About Us</a></li>
+      <li><a href="#/home" class="menu-list" aria-label="Menu item: Home">Home</a></li>
+      <li><a href="#/favorite" class="menu-list" aria-label="Menu item: Favorite">Favorite</a></li>
+      <li><a href="https://agungswebstudio.com" class="menu-list" target="_blank" rel="noreferrer" aria-label="Menu item: About Us">About Us</a></li>
     `;
   }
 }
