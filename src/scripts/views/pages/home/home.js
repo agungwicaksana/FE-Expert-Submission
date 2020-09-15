@@ -15,7 +15,7 @@ const Home = {
           </div> 
         </div>
         <category-btns class="row category-container jccm"></category-btns>
-        <div class="row card-container ais">
+        <div class="row card-container aist">
         </div>
         <pagination-btns class="row pagination-container jccm"></pagination-btns>
       </div>

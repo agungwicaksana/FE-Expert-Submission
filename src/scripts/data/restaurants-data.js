@@ -20,6 +20,25 @@ class RestaurantsData {
       return error;
     }
   }
+
+  static async detail(withLoading, id) {
+    if (withLoading) {
+      Loading.render();
+    }
+    try {
+      const response = await fetch(`${CONFIG.API_BASE_URL}/detail/${id}`);
+      const responseJson = await response.json();
+      if (withLoading) {
+        Loading.remove();
+      }
+      return responseJson.restaurant;
+    } catch (error) {
+      if (withLoading) {
+        Loading.remove(error);
+      }
+      return error;
+    }
+  }
 }
 
 export default RestaurantsData;

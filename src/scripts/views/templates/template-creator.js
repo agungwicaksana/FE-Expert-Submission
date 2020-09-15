@@ -23,7 +23,17 @@ const paginationButton = (pageNumber, active) => `
   <button class="pg-button ${active ? 'active' : ''}" aria-label="page ${pageNumber}">${pageNumber}</button>
 `;
 
+const reviewTemplate = ({ name, review, date }) => `
+    <div class="row">
+      <div class="col w100">
+        <p class="review-text">${review} – ${name}</p>
+        <p class="review-date"><i class="fa fa-calendar" aria-hidden="true"></i> ${date}</p>
+      </div>
+    </div>
+  `;
+
 export {
   restaurantCard,
   paginationButton,
+  reviewTemplate,
 };
