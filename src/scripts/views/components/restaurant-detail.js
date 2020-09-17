@@ -1,10 +1,9 @@
 import CONFIG from '../../globals/config';
 import { screenWidth } from '../../utils/get-viewport';
-import { reviewTemplate } from '../templates/template-creator';
+import { createReviews } from '../templates/template-creator';
 
 const RestaurantDetail = {
   render(detail) {
-    console.log(detail);
     let page = '';
     page += this._jumbotron(detail);
     page += this._header(detail);
@@ -13,6 +12,7 @@ const RestaurantDetail = {
     page += this._rating(detail);
     page += this._menu(detail);
     page += this._reviews(detail);
+    page += this._addReview(detail);
     page += this._saveRestaurant(detail);
     return page;
   },
@@ -74,19 +74,19 @@ const RestaurantDetail = {
     return `
       <div class="menu container">
         <div class="row">
-          <div class="col w100 jcc">
-            <h3>Menu</h3>
+          <div class="col w100">
+            <p class="section-title w100 tc">Menu</p>
           </div>
         </div>
         <div class="row jcc">
           <div class="col w100 wm45">
-            <p class="menu-title">Foods</p>
+            <p class="w25">Foods</p>
             <ul class="menu-list">
               ${foodList}
             </ul>
           </div>
           <div class="col w100 wm45">
-            <p class="menu-title">Beverages</p>
+            <p class="w25">Beverages</p>
             <ul class="menu-list">
               ${drinkList}
             </ul>
@@ -97,12 +97,12 @@ const RestaurantDetail = {
   },
 
   _reviews({ consumerReviews }) {
-    const reviews = this.__createReviews(consumerReviews);
+    const reviews = createReviews(consumerReviews);
     return `
       <div class="container">
-        <div class="row">
-          <div class="col w100 jcc tc">
-            <p>Reviews</p>
+        <div class="row jcc">
+          <div class="col w100 wm55">
+            <p class="section-title w100 tc">Reviews</p>
           </div>
         </div>
         <div class="row jcc">
@@ -111,6 +111,32 @@ const RestaurantDetail = {
           </div>
         </div>
       </div>
+    `;
+  },
+
+  _addReview({ id }) {
+    return `
+    <div class="container">
+      <div class="row jcc">
+        <div class="col w100 wm55 jcc">
+          <p class="section-title">Post Your Review</p>
+          <form id="form-review" class="w80">
+            <input type="hidden" id="id" value="${id}">
+            <div class="col w100">
+              <label for="name" class="label-form">Name</label>
+              <input type="text" id="name" class="input-form">
+            </div>
+            <div class="col w100">
+              <label for="review" class="label-form">Your review</label>
+              <textarea id="review" class="input-form" rows="7"></textarea>
+            </div>
+            <div class="col w100 jcc">
+              <button id="send-button">Send!</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
     `;
   },
 
@@ -132,10 +158,6 @@ const RestaurantDetail = {
 
   __createList(items) {
     return items.map((item) => `<li>${item.name}</li>`).join('');
-  },
-
-  __createReviews(reviews) {
-    return reviews.map((review) => reviewTemplate(review)).join('');
   },
 };
 

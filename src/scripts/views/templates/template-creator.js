@@ -23,7 +23,7 @@ const paginationButton = (pageNumber, active) => `
   <button class="pg-button ${active ? 'active' : ''}" aria-label="page ${pageNumber}">${pageNumber}</button>
 `;
 
-const reviewTemplate = ({ name, review, date }) => `
+const _reviewTemplate = ({ name, review, date }) => `
     <div class="row">
       <div class="col w100">
         <p class="review-text">${review} – ${name}</p>
@@ -31,9 +31,10 @@ const reviewTemplate = ({ name, review, date }) => `
       </div>
     </div>
   `;
+const createReviews = (reviews) => reviews.map((review) => _reviewTemplate(review)).join('');
 
 export {
   restaurantCard,
   paginationButton,
-  reviewTemplate,
+  createReviews,
 };

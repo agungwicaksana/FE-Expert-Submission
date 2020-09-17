@@ -1,5 +1,6 @@
 import RestaurantsData from '../../../data/restaurants-data';
 import RestaurantDetail from '../../components/restaurant-detail';
+import ReviewForm from './review-form';
 
 const Detail = {
   async render(id) {
@@ -15,7 +16,8 @@ const Detail = {
   },
 
   async afterRender() {
-    console.log('after render Detail');
+    const reviewForm = document.getElementById('form-review');
+    new ReviewForm().init(reviewForm);
   },
 };
 
