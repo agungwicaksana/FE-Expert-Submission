@@ -58,6 +58,7 @@ a {
 
 .tc {text-align: center;}
 .hide {display: none !important;}
+.show {display: block !important;}
 
 /* Nav */
 nav {
@@ -432,6 +433,11 @@ p.rating {
 }
 
 #send-button.disabled {background-color: #cacaca;}
+
+#form-review .info {
+    display: none;
+    color: #c21616;
+}
 
 /* Modal */
 .modal {

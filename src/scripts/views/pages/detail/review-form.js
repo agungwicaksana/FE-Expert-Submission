@@ -5,6 +5,7 @@ import { createReviews } from '../../templates/template-creator';
 class ReviewForm {
   init(reviewForm) {
     this.button = reviewForm.querySelector('#send-button');
+    this.info = document.querySelector('#form-review .info');
     this._inputOnFocus(reviewForm);
     this._initSendButton(reviewForm);
   }
@@ -17,7 +18,7 @@ class ReviewForm {
         this.__labelFocus({ focus: true, labels, index });
       });
       input.addEventListener('focusout', () => {
-        if (!this.__validateForm(input)) {
+        if (!this.__validateInput(input)) {
           this.__labelFocus({ focus: false, labels, index });
         }
       });
@@ -41,10 +42,6 @@ class ReviewForm {
     }
   }
 
-  __validateForm(input) {
-    return input.value;
-  }
-
   __disableButton() {
     this.button.classList.add('disabled');
     this.button.setAttribute('disable', 'true');
@@ -57,13 +54,16 @@ class ReviewForm {
 
   async __sendReview(reviewForm) {
     const review = this.__collectReview(reviewForm);
-    const response = await Review.post(review);
-    this.__handleResponse(response, reviewForm);
+    this.__enableButton();
+    if (this.__validateForm(review)) {
+      this.__hideInfo();
+      const response = await Review.post(review);
+      this.__handleResponse(response, reviewForm);
+    }
   }
 
   __handleResponse(response, reviewForm) {
     if (response) {
-      this.__enableButton();
       this.__resetForm(reviewForm);
       Modal.show(response);
     }
@@ -92,6 +92,34 @@ class ReviewForm {
     labels.forEach((_label, index) => {
       this.__labelFocus({ focus: false, labels, index });
     });
+  }
+
+  __validateForm({ id, name, review }) {
+    let passed = true;
+    if (!id) {
+      passed = this.__showInfo('Error: provide the correct id!');
+    }
+    if (!name) {
+      passed = this.__showInfo('Please provide your name!');
+    }
+    if (!review) {
+      passed = this.__showInfo('Please write your review!');
+    }
+    return passed;
+  }
+
+  __validateInput(input) {
+    return input.value;
+  }
+
+  __showInfo(text) {
+    this.info.classList.add('show');
+    this.info.innerText = text;
+    return false;
+  }
+
+  __hideInfo() {
+    this.info.classList.remove('show');
   }
 }
 

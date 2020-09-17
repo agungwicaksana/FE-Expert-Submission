@@ -120,6 +120,9 @@ const RestaurantDetail = {
               <div class="col w100 jcc">
                 <button id="send-button">Send!</button>
               </div>
+              <div class="col w100">
+                <p class="info tc">Halo</p>
+              </div>
             </form>
           </div>
         </div>
