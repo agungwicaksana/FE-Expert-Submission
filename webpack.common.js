@@ -1,5 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -29,10 +31,10 @@ module.exports = {
             options: {
               name: '[name].[ext]',
               outputPath: 'img/',
-              publicPath: 'img/'
-            }
-          }
-        ]
+              publicPath: 'img/',
+            },
+          },
+        ],
       },
       {
         test: /\.(svg|eot|woff|ttf|svg|woff2)$/,
@@ -40,14 +42,14 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: "[path][name].[ext]",
-              outputPath: "font/",
-              publicPath: "font/"
-            }
-          }
-        ]
-      }
-    ]
+              name: '[path][name].[ext]',
+              outputPath: 'font/',
+              publicPath: 'font/',
+            },
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -61,6 +63,9 @@ module.exports = {
           to: path.resolve(__dirname, 'dist/'),
         },
       ],
+    }),
+    new ServiceWorkerWebpackPlugin({
+      entry: path.resolve(__dirname, 'src/scripts/serviceworker.js'),
     }),
   ],
 };
