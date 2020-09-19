@@ -1,8 +1,13 @@
 import API_ENDPOINT from '../globals/api-endpoint';
+import CONFIG from '../globals/config';
 
 class Review {
   static async post({ id, name, review }) {
     try {
+      const headers = {
+        'Content-Type': 'application/json',
+        'X-Auth-Token': CONFIG.AUTH_TOKEN,
+      };
       const body = {
         id: `${id}`,
         name: `${name}`,
@@ -10,10 +15,7 @@ class Review {
       };
       const options = {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Auth-Token': '12345',
-        },
+        headers,
         body: JSON.stringify(body),
       };
       const response = await fetch(API_ENDPOINT.REVIEW, options);
