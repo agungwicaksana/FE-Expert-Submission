@@ -1,4 +1,4 @@
-import CONFIG from '../globals/config';
+import API_ENDPOINT from '../globals/api-endpoint';
 
 class Review {
   static async post({ id, name, review }) {
@@ -16,7 +16,7 @@ class Review {
         },
         body: JSON.stringify(body),
       };
-      const response = await fetch(`${CONFIG.API_BASE_URL}/review`, options);
+      const response = await fetch(API_ENDPOINT.REVIEW, options);
       const responseJson = await response.json();
       return responseJson;
     } catch (error) {

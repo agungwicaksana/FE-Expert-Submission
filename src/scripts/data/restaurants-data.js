@@ -1,4 +1,4 @@
-import CONFIG from '../globals/config';
+import API_ENDPOINT from '../globals/api-endpoint';
 import Loading from '../views/components/loading';
 
 class RestaurantsData {
@@ -7,7 +7,7 @@ class RestaurantsData {
       Loading.render();
     }
     try {
-      const response = await fetch(`${CONFIG.API_BASE_URL}/list`);
+      const response = await fetch(API_ENDPOINT.LIST);
       const responseJson = await response.json();
       if (withLoading) {
         Loading.remove();
@@ -26,7 +26,7 @@ class RestaurantsData {
       Loading.render();
     }
     try {
-      const response = await fetch(`${CONFIG.API_BASE_URL}/detail/${id}`);
+      const response = await fetch(API_ENDPOINT.DETAIL(id));
       const responseJson = await response.json();
       if (withLoading) {
         Loading.remove();

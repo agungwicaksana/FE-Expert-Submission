@@ -1,4 +1,4 @@
-import CONFIG from '../../globals/config';
+import API_ENDPOINT from '../../globals/api-endpoint';
 import { screenWidth } from '../../utils/get-viewport';
 import { createReviews } from '../templates/template-creator';
 
@@ -15,7 +15,7 @@ const RestaurantDetail = {
   components: {
     jumbotron: ({ pictureId }) => {
       const pictureSize = (screenWidth() > 800) ? 'large' : 'medium';
-      return `<div class="hero" style="background-image: url('${CONFIG.API_BASE_URL}/images/${pictureSize}/${pictureId}')"></div>`;
+      return `<div class="hero" style="background-image: url('${API_ENDPOINT.IMAGE(pictureSize, pictureId)}')"></div>`;
     },
 
     header: ({ name, city }) => `
