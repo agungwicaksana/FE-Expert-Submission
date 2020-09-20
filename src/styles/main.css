@@ -59,6 +59,7 @@ a {
 .tc {text-align: center;}
 .hide {display: none !important;}
 .show {display: flex !important;}
+.d-block {display: block !important;}
 
 /* Nav */
 nav {

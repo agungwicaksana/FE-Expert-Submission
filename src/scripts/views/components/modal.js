@@ -32,14 +32,14 @@ const Modal = {
     modal.remove();
   },
 
-  _element({ error, message }) {
+  _element(content) {
     return `
       <div class="modal">
         <div class="container">
           <div class="row jcc">
             <div class="col w100 wm45 tc">
-              <i class="w100 fa ${error ? 'error fa-exclamation-triangle' : 'success fa-check-circle-o'}" aria-hidden="true"></i>
-              <p class="w100">${message}</p>
+              <i class="w100 fa ${(content.error === undefined) ? 'error fa-exclamation-triangle' : 'success fa-check-circle-o'}" aria-hidden="true"></i>
+              <p class="w100">${content.message || content}</p>
             </div>
           </div>
         </div>

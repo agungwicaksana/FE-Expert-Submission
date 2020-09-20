@@ -54,12 +54,12 @@ class ReviewForm {
 
   async __sendReview(reviewForm) {
     const review = this.__collectReview(reviewForm);
-    this.__enableButton();
     if (this.__validateForm(review)) {
       this.__hideInfo();
       const response = await Review.post(review);
       this.__handleResponse(response, reviewForm);
     }
+    this.__enableButton();
   }
 
   __handleResponse(response, reviewForm) {
@@ -113,13 +113,13 @@ class ReviewForm {
   }
 
   __showInfo(text) {
-    this.info.classList.add('show');
+    this.info.classList.add('d-block');
     this.info.innerText = text;
     return false;
   }
 
   __hideInfo() {
-    this.info.classList.remove('show');
+    this.info.classList.remove('d-block');
   }
 }
 

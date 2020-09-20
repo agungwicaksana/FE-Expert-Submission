@@ -1,5 +1,4 @@
 import RestaurantsData from '../../data/restaurants-data';
-import API_ENDPOINT from '../../globals/api-endpoint';
 import { screenWidth } from '../../utils/get-viewport';
 import { createReviews } from '../templates/template-creator';
 
