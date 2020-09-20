@@ -1,10 +1,13 @@
+import RestaurantsData from '../../data/restaurants-data';
 import API_ENDPOINT from '../../globals/api-endpoint';
 import { screenWidth } from '../../utils/get-viewport';
 import { createReviews } from '../templates/template-creator';
 
 const RestaurantDetail = {
-  render(detail) {
+  async render(detail) {
     let page = '';
+    const jumbotron = await this.jumbotron(detail);
+    page += jumbotron;
     // eslint-disable-next-line array-callback-return
     Object.values(this.components).map((component) => {
       page += component(detail);
@@ -12,12 +15,16 @@ const RestaurantDetail = {
     return page;
   },
 
-  components: {
-    jumbotron: ({ pictureId }) => {
-      const pictureSize = (screenWidth() > 800) ? 'large' : 'medium';
-      return `<div class="hero" style="background-image: url('${API_ENDPOINT.IMAGE(pictureSize, pictureId)}')"></div>`;
-    },
+  jumbotron: async ({ pictureId, name }) => {
+    const pictureSize = (screenWidth() > 800) ? 'large' : 'medium';
+    return `
+      <div class="hero">
+        <img src="${await RestaurantsData.picture(pictureSize, pictureId)}" alt="${name}">
+      </div>
+    `;
+  },
 
+  components: {
     header: ({ name, city }) => `
         <div class="header container">
           <div class="row jcc tc">

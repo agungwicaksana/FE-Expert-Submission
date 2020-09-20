@@ -1,11 +1,11 @@
 import { trimParagraph } from '../../utils/home-utils';
-import API_ENDPOINT from '../../globals/api-endpoint';
+import RestaurantsData from '../../data/restaurants-data';
 
-const restaurantCard = ({ id, name, pictureId, city, description, rating }) => `
+const restaurantCard = async ({ id, name, pictureId, city, description, rating }) => `
   <div class="col w100 wm45 wl30 card">
     <a href="#/detail/${id}" class="card-link">
       <div class="card-img">
-        <img src="${API_ENDPOINT.IMAGE('small', pictureId)}" alt="${name}">
+        <img src="${await RestaurantsData.picture('small', pictureId)}" alt="${name}">
         <span aria-label="City: ${city}">${city}</span>
       </div>
       <div class="card-body">

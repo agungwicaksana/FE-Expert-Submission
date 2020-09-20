@@ -39,6 +39,15 @@ class RestaurantsData {
       return error;
     }
   }
+
+  static async picture(size, pictureId) {
+    try {
+      const response = await fetch(API_ENDPOINT.IMAGE(size, pictureId));
+      return response.url;
+    } catch (error) {
+      return '../../images/heros/hero-image_2.jpg';
+    }
+  }
 }
 
 export default RestaurantsData;

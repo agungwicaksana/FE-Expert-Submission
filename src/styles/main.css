@@ -323,6 +323,11 @@ a#skip:focus { top: 90px; }
 }
 
 /* Detail */
+.hero img {
+    width: 100%;
+    height: inherit;
+    object-fit: cover;
+}
 .header {
     margin-top: 20px;
     margin-bottom: 3px;

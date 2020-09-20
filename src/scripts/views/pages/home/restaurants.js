@@ -84,8 +84,9 @@ class Restaurants {
     const container = document.querySelector('.card-container');
     const pagedRestaurants = await this._prepareToRender(showLoading);
     container.innerHTML = '';
-    pagedRestaurants.forEach((restaurant) => {
-      container.innerHTML += restaurantCard(restaurant);
+    pagedRestaurants.forEach(async (restaurant) => {
+      const card = await restaurantCard(restaurant);
+      container.innerHTML += card;
     });
   }
 }
