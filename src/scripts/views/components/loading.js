@@ -68,7 +68,7 @@ const Loading = {
       <div class="container aic">
         <div class="row jcc tc">
           <p class="error">${error}</p>
-          <a class="error" href="${window.location.href}"><u>Reload</u></a>
+          <a class="error" href="#/home"><u>Home</u></a>
         </div>
       </div>
     `;
