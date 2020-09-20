@@ -54,12 +54,12 @@ class ReviewForm {
 
   async __sendReview(reviewForm) {
     const review = this.__collectReview(reviewForm);
+    this.__enableButton();
     if (this.__validateForm(review)) {
       this.__hideInfo();
       const response = await Review.post(review);
       this.__handleResponse(response, reviewForm);
     }
-    this.__enableButton();
   }
 
   __handleResponse(response, reviewForm) {
