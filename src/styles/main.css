@@ -434,6 +434,12 @@ p.rating {
     }
 }
 
+.empty {min-height: 460px;}
+.empty i {
+    font-size: 10em;
+    color: #bdbdbd;
+}
+
 #form-review .col {
     margin-bottom: 10px;
 }
