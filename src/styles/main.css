@@ -389,7 +389,7 @@ p.rating {
     margin-top: 5px;
 }
 
-.save-button {
+.favorite-button {
     display: block;
     position: sticky;
     bottom: 20px;
@@ -400,9 +400,38 @@ p.rating {
     min-width: 43px;
     min-height: 43px;
 }
-.save-button i {
+.favorite-button i {
     font-size: 37px;
-    color: #c21616;
+}
+
+.favorited i { animation: favorited 300ms ease-in-out 0s 1 normal forwards; }
+.unfavorited i { animation: unfavorited 300ms ease-in-out 0s 1 normal forwards; }
+
+@keyframes favorited {
+    0% { 
+        transform: scale(1);
+        color: #b71c1c;
+    }
+    50% {transform: scale(0);}
+    100% {
+        transform: scale(1);
+        color: #ef9a9a;
+        text-shadow: 0 0 5px rgba(239, 154, 154, .55);
+        -webkit-text-shadow: 0 0 5px rgba(239, 154, 154, .55);
+    }
+}
+@keyframes unfavorited {
+    0% {
+        transform: scale(1);
+        color: #ef9a9a;
+    }
+    50% {transform: scale(0);}
+    100% {
+        transform: scale(1);
+        color: #b71c1c;
+        text-shadow: 0 0 5px rgba(129, 7, 7, .4);
+        -webkit-text-shadow: 0 0 5px rgba(129, 7, 7, .4);
+    }
 }
 
 #form-review .col {

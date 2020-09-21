@@ -135,8 +135,8 @@ const RestaurantDetail = {
       </div>
       `,
 
-    saveRestaurant: ({ id }) => `
-        <button class="save-button" aria-label="Save button" onClick="console.log('save to idb ${id}')"><i class="fa fa-heart"></i></button>
+    saveRestaurant: () => `
+        <button class="favorite-button" aria-label="Favorite button"><i class="fa fa-heart"></i></button>
     `,
   },
 

@@ -1,12 +1,13 @@
 import RestaurantsData from '../../../data/restaurants-data';
 import RestaurantDetail from '../../components/restaurant-detail';
 import ReviewForm from './review-form';
+import FavoriteButton from './favorite-button';
 
 const Detail = {
   async render(id) {
     const showLoading = true;
-    const detailData = await this._getDetail(showLoading, id);
-    const htmlElement = RestaurantDetail.render(detailData);
+    this.detailData = await this._getDetail(showLoading, id);
+    const htmlElement = RestaurantDetail.render(this.detailData);
     return htmlElement;
   },
 
@@ -18,6 +19,7 @@ const Detail = {
   async afterRender() {
     const reviewForm = document.getElementById('form-review');
     new ReviewForm().init(reviewForm);
+    new FavoriteButton().init(this.detailData);
   },
 };
 
