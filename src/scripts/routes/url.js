@@ -10,6 +10,7 @@ const Url = {
     return {
       page: `/${urlPieces[1] || ''}`,
       id: urlPieces[2] || '',
+      opt: urlPieces[3] || '',
     };
   },
 };

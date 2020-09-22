@@ -1,9 +1,9 @@
 import { trimParagraph } from '../../utils/home-utils';
 import RestaurantsData from '../../data/restaurants-data';
 
-const restaurantCard = async ({ id, name, pictureId, city, description, rating }) => `
+const restaurantCard = async ({ id, name, pictureId, city, description, rating, favorite }) => `
   <div class="col w100 wm45 wl30 card">
-    <a href="#/detail/${id}" class="card-link">
+    <a href="#/detail/${id}${favorite ? '/fav' : ''}" class="card-link">
       <div class="card-img">
         <img src="${await RestaurantsData.picture('small', pictureId)}" alt="${name}">
         <span aria-label="City: ${city}">${city}</span>

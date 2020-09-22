@@ -9,7 +9,11 @@ class FavoriteRestaurants {
   render(restaurants) {
     this._container.innerHTML = '';
     restaurants.forEach(async (restaurant) => {
-      const card = await restaurantCard(restaurant);
+      const _restaurant = {
+        ...restaurant,
+        favorite: true,
+      };
+      const card = await restaurantCard(_restaurant);
       this._container.innerHTML += card;
     });
   }

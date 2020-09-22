@@ -10,9 +10,8 @@ class App {
 
   async renderPage() {
     const url = Url.getActiveUrl();
-    const { id, page } = url;
-    const Page = Route[page];
-    this._mainContent.innerHTML = await Page.render(id);
+    const Page = Route[url.page];
+    this._mainContent.innerHTML = await Page.render(url);
     await Page.afterRender();
   }
 }
