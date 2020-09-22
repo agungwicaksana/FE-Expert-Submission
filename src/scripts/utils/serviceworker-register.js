@@ -4,7 +4,8 @@ const serviceWorkerRegister = async () => {
   if ('serviceWorker' in navigator) {
     await runtime.register();
   } else {
-    console.log('service Worker isn\'t supported in this browser');
+    // eslint-disable-next-line no-alert
+    alert('service Worker isn\'t supported in this browser');
   }
 };
 
