@@ -136,7 +136,7 @@ const RestaurantDetail = {
       `,
 
     saveRestaurant: () => `
-        <button class="favorite-button" aria-label="Favorite button"><i class="fa fa-heart"></i></button>
+        <button class="favorite-button" aria-label="Favorite"><i class="fa fa-heart"></i></button>
     `,
   },
 

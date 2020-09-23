@@ -3,7 +3,7 @@ import CONFIG from '../globals/config';
 const CacheHelper = {
   async cachingAppShell(requests) {
     const cache = await this._openCache();
-    cache.addAll(requests);
+    await cache.addAll(requests);
   },
 
   async deleteOldCache() {
@@ -18,7 +18,8 @@ const CacheHelper = {
     if (response) {
       return response;
     }
-    return this._fetchRequest(request);
+    const fetch = await this._fetchRequest(request);
+    return fetch;
   },
 
   async _openCache() {
@@ -36,7 +37,7 @@ const CacheHelper = {
 
   async _addCache(request) {
     const cache = await this._openCache();
-    cache.add(request);
+    await cache.add(request);
   },
 };
 
