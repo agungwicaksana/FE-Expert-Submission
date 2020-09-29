@@ -1,10 +1,10 @@
 import FavoriteRestaurantIdb from '../../../data/idb';
 
 class FavoriteButton {
-  init(restaurant) {
+  async init(restaurant) {
     this._restaurant = restaurant;
     this._button = document.querySelector('.favorite-button');
-    this._checkButton();
+    await this._checkButton();
     this._initButton();
   }
 
