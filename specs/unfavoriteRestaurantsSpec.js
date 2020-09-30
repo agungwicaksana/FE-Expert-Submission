@@ -33,4 +33,14 @@ describe('Unfavoriting a restaurant', () => {
     expect(await FavoriteRestaurantIdb.getAllRestaurants())
       .toEqual([]);
   })
+
+  it('should not throw error if the unfavorited restaurant is not in the list', async () => {
+    await initButton(restaurantTestingData);
+    await FavoriteRestaurantIdb.deleteRestaurant(restaurantTestingData.id);
+
+    document.querySelector('[aria-label="Unfavorite this restaurant!"]').dispatchEvent(new Event('click'));
+
+    expect(await FavoriteRestaurantIdb.getAllRestaurants())
+      .toEqual([]);
+  })
 })
