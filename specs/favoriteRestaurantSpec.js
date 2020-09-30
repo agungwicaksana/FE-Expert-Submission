@@ -42,11 +42,8 @@ describe('Favoriting a restaurant', () => {
     await FavoriteRestaurantIdb.deleteRestaurant(restaurantTestingData.id);
   })
 
-  xit('should not add a restaurant if it has no id', async () => {
-    await initButton({
-      ...restaurantTestingData,
-      id: undefined,
-    });
+  it('should not add a restaurant if it has no id', async () => {
+    await initButton({});
     document.querySelector('.favorite-button').dispatchEvent(new Event('click'));
 
     expect(await FavoriteRestaurantIdb.getAllRestaurants())
