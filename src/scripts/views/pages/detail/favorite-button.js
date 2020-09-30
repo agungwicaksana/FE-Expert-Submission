@@ -4,27 +4,29 @@ class FavoriteButton {
   async init(restaurant) {
     this._restaurant = restaurant;
     this._button = document.querySelector('.favorite-button');
-    await this._checkButton();
-    this._initButton();
+    const favorited = await this._checkButton();
+    this._initButton(favorited);
   }
 
-  _initButton() {
+  _initButton(favorited) {
     this._button.addEventListener('click', async (event) => {
       event.preventDefault();
-      if (await this.__isFavorited()) {
-        this.__unfavorite();
+      if (favorited) {
+        await this.__unfavorite();
       } else {
-        this.__favorite();
+        await this.__favorite();
       }
     });
   }
 
   async _checkButton() {
-    if (await this.__isFavorited()) {
-      this.__favoritedButton();
+    const status = await this.__isFavorited();
+    if (status) {
+      this.__showUnfavoriteButton();
     } else {
-      this.__unfavoritedButton();
+      this.__showFavoriteButton();
     }
+    return !!status;
   }
 
   async __isFavorited() {
@@ -35,22 +37,22 @@ class FavoriteButton {
   async __favorite() {
     const favorited = await FavoriteRestaurantIdb.putRestaurant(this._restaurant);
     if (favorited) {
-      this.__favoritedButton();
+      this.__showUnfavoriteButton();
     }
   }
 
-  __unfavorite() {
-    FavoriteRestaurantIdb.deleteRestaurant(this._restaurant.id);
-    this.__unfavoritedButton();
+  async __unfavorite() {
+    await FavoriteRestaurantIdb.deleteRestaurant(this._restaurant.id);
+    this.__showFavoriteButton();
   }
 
-  __favoritedButton() {
+  __showUnfavoriteButton() {
     this._button.classList.add('favorited');
     this._button.classList.remove('unfavorited');
     this._button.setAttribute('aria-label', 'Unfavorite this restaurant!');
   }
 
-  __unfavoritedButton() {
+  __showFavoriteButton() {
     this._button.classList.remove('favorited');
     this._button.classList.add('unfavorited');
     this._button.setAttribute('aria-label', 'Favorite this restaurant!');
