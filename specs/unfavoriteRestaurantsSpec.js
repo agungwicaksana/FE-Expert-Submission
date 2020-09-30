@@ -18,4 +18,11 @@ describe('Unfavoriting a restaurant', () => {
     expect(document.querySelector('[aria-label="Unfavorite this restaurant!"]'))
       .toBeTruthy();
   })
+
+  it('should not show favorite button when the restaurant has been favorited', async () => {
+    await initButton(restaurantTestingData);
+
+    expect(document.querySelector('[aria-label="Favorite this restaurant!"]'))
+      .toBeFalsy();
+  })
 })
