@@ -1,5 +1,4 @@
 /* eslint-disable */ 
-import FavoriteRestaurantIdb from '../src/scripts/data/idb';
 import FavoriteButton from '../src/scripts/views/pages/detail/favorite-button';
 
 const restaurantData = {
@@ -47,8 +46,13 @@ describe('Favoriting a restaurant', () => {
     await new FavoriteButton().init(restaurantData)
   })
 
-  it('should show favorite button when the restaurant has not been liked', async () => {
-    expect(document.querySelector('.unfavorited'))
+  it('should show favorite button when the restaurant has not been favorited', () => {
+    expect(document.querySelector('[aria-label="Favorite this restaurant!"]'))
       .toBeTruthy();
   });
+
+  it('should not show the unfavorite button when the restaurant has not been favorited', () => {
+    expect(document.querySelector('[aria-label="Unfavorite this restaurant!"]'))
+      .toBeFalsy();
+  })
 });

@@ -47,11 +47,13 @@ class FavoriteButton {
   __favoritedButton() {
     this._button.classList.add('favorited');
     this._button.classList.remove('unfavorited');
+    this._button.setAttribute('aria-label', 'Unfavorite this restaurant!');
   }
 
   __unfavoritedButton() {
     this._button.classList.remove('favorited');
     this._button.classList.add('unfavorited');
+    this._button.setAttribute('aria-label', 'Favorite this restaurant!');
   }
 }
 
