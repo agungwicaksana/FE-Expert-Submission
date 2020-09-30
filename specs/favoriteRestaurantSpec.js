@@ -58,10 +58,19 @@ describe('Favoriting a restaurant', () => {
 
   it('should be able to favorite the restaurant', async () => {
     document.querySelector('.favorite-button').dispatchEvent(new Event('click'));
-    const restaurant = await FavoriteRestaurantIdb.getRestaurant(restaurantTestingData.id);
 
-    expect(restaurant)
+    expect(await FavoriteRestaurantIdb.getRestaurant(restaurantTestingData.id))
       .toEqual(restaurantTestingData);
+    
+    await FavoriteRestaurantIdb.deleteRestaurant(restaurantTestingData.id);
+  })
+
+  it('should not favorite a restaurant again when its already favorited', async () => {
+    await FavoriteRestaurantIdb.putRestaurant(restaurantTestingData);
+    document.querySelector('.favorite-button').dispatchEvent(new Event('click'));
+
+    expect(await FavoriteRestaurantIdb.getAllRestaurants())
+      .toEqual([restaurantTestingData]);
     
     await FavoriteRestaurantIdb.deleteRestaurant(restaurantTestingData.id);
   })
