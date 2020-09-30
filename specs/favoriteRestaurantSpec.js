@@ -40,23 +40,31 @@ const restaurantTestingData = {
   rating: 4.5
 }
 
+const initButton = async (data) => {
+  await new FavoriteButton().init(data)
+}
+
 describe('Favoriting a restaurant', () => {
   beforeEach(async () => {
     document.body.innerHTML = '<button class="favorite-button">Button</button>';
-    await new FavoriteButton().init(restaurantTestingData)
   })
 
-  it('should show favorite button when the restaurant has not been favorited', () => {
+  it('should show favorite button when the restaurant has not been favorited', async () => {
+    await initButton(restaurantTestingData);
+
     expect(document.querySelector('[aria-label="Favorite this restaurant!"]'))
       .toBeTruthy();
   });
 
-  it('should not show the unfavorite button when the restaurant has not been favorited', () => {
+  it('should not show the unfavorite button when the restaurant has not been favorited', async () => {
+    await initButton(restaurantTestingData);
+
     expect(document.querySelector('[aria-label="Unfavorite this restaurant!"]'))
       .toBeFalsy();
   })
 
   it('should be able to favorite the restaurant', async () => {
+    await initButton(restaurantTestingData);
     document.querySelector('.favorite-button').dispatchEvent(new Event('click'));
 
     expect(await FavoriteRestaurantIdb.getRestaurant(restaurantTestingData.id))
@@ -66,6 +74,7 @@ describe('Favoriting a restaurant', () => {
   })
 
   it('should not favorite a restaurant again when its already favorited', async () => {
+    await initButton(restaurantTestingData);
     await FavoriteRestaurantIdb.putRestaurant(restaurantTestingData);
     document.querySelector('.favorite-button').dispatchEvent(new Event('click'));
 
@@ -73,5 +82,16 @@ describe('Favoriting a restaurant', () => {
       .toEqual([restaurantTestingData]);
     
     await FavoriteRestaurantIdb.deleteRestaurant(restaurantTestingData.id);
+  })
+
+  xit('should not add a restaurant if it has no id', async () => {
+    await initButton({
+      ...restaurantTestingData,
+      id: undefined,
+    });
+    document.querySelector('.favorite-button').dispatchEvent(new Event('click'));
+
+    expect(await FavoriteRestaurantIdb.getAllRestaurants())
+      .toEqual([]);
   })
 });
