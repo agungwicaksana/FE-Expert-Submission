@@ -25,4 +25,12 @@ describe('Unfavoriting a restaurant', () => {
     expect(document.querySelector('[aria-label="Favorite this restaurant!"]'))
       .toBeFalsy();
   })
+
+  it('should be able to remove favorited restaurants from list', async () => {
+    await initButton(restaurantTestingData);
+    document.querySelector('[aria-label="Unfavorite this restaurant!"]').dispatchEvent(new Event('click'));
+
+    expect(await FavoriteRestaurantIdb.getAllRestaurants())
+      .toEqual([]);
+  })
 })
