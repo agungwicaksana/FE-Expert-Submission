@@ -4,14 +4,14 @@ class FavoriteButton {
   async init(restaurant) {
     this._restaurant = restaurant;
     this._button = document.querySelector('.favorite-button');
-    const favorited = await this._checkButton();
-    this._initButton(favorited);
+    this.favorited = await this._checkButton();
+    this._initButton();
   }
 
-  _initButton(favorited) {
+  _initButton() {
     this._button.addEventListener('click', async (event) => {
       event.preventDefault();
-      if (favorited) {
+      if (this.favorited) {
         await this.__unfavorite();
       } else {
         await this.__favorite();
@@ -39,11 +39,13 @@ class FavoriteButton {
     if (favorited) {
       this.__showUnfavoriteButton();
     }
+    this.init(this._restaurant);
   }
 
   async __unfavorite() {
     await FavoriteRestaurantIdb.deleteRestaurant(this._restaurant.id);
     this.__showFavoriteButton();
+    this.init(this._restaurant);
   }
 
   __showUnfavoriteButton() {
