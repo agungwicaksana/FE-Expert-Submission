@@ -4,3 +4,4 @@ dist/
 starter.html
 css-theme.txt
 *.zip
+e2e/outputs/*
