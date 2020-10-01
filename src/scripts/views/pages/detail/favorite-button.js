@@ -1,8 +1,7 @@
-import FavoriteRestaurantIdb from '../../../data/idb';
-
 class FavoriteButton {
-  async init(restaurant) {
+  async init({ restaurant, FavoriteRestaurant }) {
     this._restaurant = restaurant;
+    this._FavoriteRestaurant = FavoriteRestaurant;
     this._button = document.querySelector('.favorite-button');
     this.favorited = await this._checkButton();
     this._initButton();
@@ -30,22 +29,22 @@ class FavoriteButton {
   }
 
   async __isFavorited() {
-    const check = await FavoriteRestaurantIdb.getRestaurant(this._restaurant.id);
+    const check = await this._FavoriteRestaurant.getRestaurant(this._restaurant.id);
     return check;
   }
 
   async __favorite() {
-    const favorited = await FavoriteRestaurantIdb.putRestaurant(this._restaurant);
+    const favorited = await this._FavoriteRestaurant.putRestaurant(this._restaurant);
     if (favorited) {
       this.__showUnfavoriteButton();
     }
-    this.init(this._restaurant);
+    this.init({ restaurant: this._restaurant, FavoriteRestaurant: this._FavoriteRestaurant });
   }
 
   async __unfavorite() {
-    await FavoriteRestaurantIdb.deleteRestaurant(this._restaurant.id);
+    await this._FavoriteRestaurant.deleteRestaurant(this._restaurant.id);
     this.__showFavoriteButton();
-    this.init(this._restaurant);
+    this.init({ restaurant: this._restaurant, FavoriteRestaurant: this._FavoriteRestaurant });
   }
 
   __showUnfavoriteButton() {

@@ -1,5 +1,8 @@
 /* eslint-disable */ 
+import FavoriteRestaurantIdb from '../src/scripts/data/idb';
 import FavoriteButton from '../src/scripts/views/pages/detail/favorite-button';
+
+const FavoriteRestaurant = FavoriteRestaurantIdb;
 
 const restaurantTestingData = {
   address: "Jln. Belimbing Timur no 27",
@@ -44,10 +47,11 @@ const addFavoriteButton = () => {
 }
 
 const initButton = async (data) => {
-  await new FavoriteButton().init(data)
+  await new FavoriteButton().init({ restaurant: data, FavoriteRestaurant })
 }
 
 export {
+  FavoriteRestaurant,
   restaurantTestingData,
   addFavoriteButton,
   initButton,

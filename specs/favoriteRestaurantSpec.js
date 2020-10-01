@@ -1,6 +1,5 @@
 /* eslint-disable */ 
-import FavoriteRestaurantIdb from '../src/scripts/data/idb';
-import { addFavoriteButton, restaurantTestingData, initButton } from './helper';
+import { addFavoriteButton, restaurantTestingData, initButton, FavoriteRestaurant } from './helper';
 
 describe('Favoriting a restaurant', () => {
   beforeEach(async () => {
@@ -25,28 +24,28 @@ describe('Favoriting a restaurant', () => {
     await initButton(restaurantTestingData);
     document.querySelector('.favorite-button').dispatchEvent(new Event('click'));
 
-    expect(await FavoriteRestaurantIdb.getRestaurant(restaurantTestingData.id))
+    expect(await FavoriteRestaurant.getRestaurant(restaurantTestingData.id))
       .toEqual(restaurantTestingData);
     
-    await FavoriteRestaurantIdb.deleteRestaurant(restaurantTestingData.id);
+    await FavoriteRestaurant.deleteRestaurant(restaurantTestingData.id);
   })
 
   it('should not favorite a restaurant again when its already favorited', async () => {
     await initButton(restaurantTestingData);
-    await FavoriteRestaurantIdb.putRestaurant(restaurantTestingData);
+    await FavoriteRestaurant.putRestaurant(restaurantTestingData);
     document.querySelector('.favorite-button').dispatchEvent(new Event('click'));
 
-    expect(await FavoriteRestaurantIdb.getAllRestaurants())
+    expect(await FavoriteRestaurant.getAllRestaurants())
       .toEqual([restaurantTestingData]);
     
-    await FavoriteRestaurantIdb.deleteRestaurant(restaurantTestingData.id);
+    await FavoriteRestaurant.deleteRestaurant(restaurantTestingData.id);
   })
 
   it('should not add a restaurant if it has no id', async () => {
     await initButton({});
     document.querySelector('.favorite-button').dispatchEvent(new Event('click'));
 
-    expect(await FavoriteRestaurantIdb.getAllRestaurants())
+    expect(await FavoriteRestaurant.getAllRestaurants())
       .toEqual([]);
   })
 });

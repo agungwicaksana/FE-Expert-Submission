@@ -1,4 +1,4 @@
-const { itActsAsFavoriteRestaurantModel } = require("./contract/favoriteRestaurantContract");
+import { itActsAsFavoriteRestaurantModel } from './contract/favoriteRestaurantContract';
 
 /* eslint-disable */
 let favoriteRestaurant = [];

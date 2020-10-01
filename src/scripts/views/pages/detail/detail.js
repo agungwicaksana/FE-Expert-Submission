@@ -30,7 +30,10 @@ const Detail = {
   async afterRender() {
     const reviewForm = document.getElementById('form-review');
     new ReviewForm().init(reviewForm);
-    await new FavoriteButton().init(this.detailData);
+    await new FavoriteButton().init({
+      restaurant: this.detailData,
+      FavoriteRestaurant: FavoriteRestaurantIdb,
+    });
   },
 };
 

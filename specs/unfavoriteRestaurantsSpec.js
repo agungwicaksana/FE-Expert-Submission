@@ -1,17 +1,16 @@
 /* eslint-disable */
-import FavoriteRestaurantIdb from '../src/scripts/data/idb';
-import { addFavoriteButton, initButton, restaurantTestingData } from './helper';
+import { addFavoriteButton, initButton, restaurantTestingData, FavoriteRestaurant } from './helper';
 
 describe('Unfavoriting a restaurant', () => {
   beforeEach(async () => {
     addFavoriteButton();
-    await FavoriteRestaurantIdb.putRestaurant(restaurantTestingData);
+    await FavoriteRestaurant.putRestaurant(restaurantTestingData);
   })
-
+  
   afterEach(async () => {
-    await FavoriteRestaurantIdb.deleteRestaurant(restaurantTestingData.id);
+    await FavoriteRestaurant.deleteRestaurant(restaurantTestingData.id);
   })
-
+  
   it('should display unfavorite button when restaurant has been favorited', async () => {
     await initButton(restaurantTestingData);
 
@@ -30,17 +29,17 @@ describe('Unfavoriting a restaurant', () => {
     await initButton(restaurantTestingData);
     document.querySelector('[aria-label="Unfavorite this restaurant!"]').dispatchEvent(new Event('click'));
 
-    expect(await FavoriteRestaurantIdb.getAllRestaurants())
+    expect(await FavoriteRestaurant.getAllRestaurants())
       .toEqual([]);
   })
 
   it('should not throw error if the unfavorited restaurant is not in the list', async () => {
     await initButton(restaurantTestingData);
-    await FavoriteRestaurantIdb.deleteRestaurant(restaurantTestingData.id);
+    await FavoriteRestaurant.deleteRestaurant(restaurantTestingData.id);
 
     document.querySelector('[aria-label="Unfavorite this restaurant!"]').dispatchEvent(new Event('click'));
 
-    expect(await FavoriteRestaurantIdb.getAllRestaurants())
+    expect(await FavoriteRestaurant.getAllRestaurants())
       .toEqual([]);
   })
 })
