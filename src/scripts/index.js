@@ -7,6 +7,8 @@ import 'font-awesome/css/font-awesome.css';
 import './views/components/app-root';
 import App from './views/app';
 import serviceWorkerRegister from './utils/serviceworker-register';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 const app = new App(document.getElementById('main-content'));
 

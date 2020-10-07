@@ -18,7 +18,7 @@ const RestaurantDetail = {
     const pictureSize = (screenWidth() > 800) ? 'large' : 'medium';
     return `
       <div class="hero">
-        <img src="${await RestaurantsData.picture(pictureSize, pictureId)}" alt="${name}">
+        <img class="lazyload" data-src="${await RestaurantsData.picture(pictureSize, pictureId)}" alt="${name}">
       </div>
     `;
   },

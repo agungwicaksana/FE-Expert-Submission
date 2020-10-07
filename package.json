@@ -47,6 +47,7 @@
   "dependencies": {
     "font-awesome": "^4.7.0",
     "idb": "^5.0.6",
+    "lazysizes": "^5.2.2",
     "regenerator-runtime": "^0.13.5",
     "serviceworker-webpack-plugin": "^1.0.1"
   }
