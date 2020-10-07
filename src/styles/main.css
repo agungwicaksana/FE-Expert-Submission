@@ -139,14 +139,14 @@ nav ul {
 
 /* Hero */
 .hero {
-    background: url('../public/images/heros/hero-image_2.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
     height: 200px;
     font-family: 'Rancho', Helvetica, sans-serif;
 }
-.hero .container {height: 100%;}
+.hero .container {
+    height: 100%;
+    position: relative;
+    top: -100%
+}
 .head {
     color: #fff;
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.623);

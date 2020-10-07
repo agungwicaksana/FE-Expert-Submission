@@ -6,6 +6,10 @@ class Hero extends HTMLElement {
   _render() {
     this.innerHTML = `
       <div class="hero">
+        <img src="./images/heros/hero-image_2-large.jpg"
+          srcset="./images/heros/hero-image_2-small.jpg 480w, ./images/heros/hero-image_2-large.jpg 800w"
+          sizes="(max-width: 600px) 480px, 800px"
+          alt="Hero Image">
         <div class="container aic">
             <div class="row">
                 <div class="col w100 jcc">
