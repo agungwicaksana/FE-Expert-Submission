@@ -39,6 +39,18 @@ const CacheHelper = {
     const cache = await this._openCache();
     await cache.add(request);
   },
+
+  async networkFirst(request) {
+    return fetch(request)
+      .then(async (response) => {
+        await this._addCache(request);
+        return response;
+      })
+      .catch(async () => {
+        const matchCaches = await caches.match(request);
+        return matchCaches;
+      });
+  },
 };
 
 export default CacheHelper;
